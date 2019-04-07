@@ -1,4 +1,6 @@
 require 'spec_helper'
+require './lib/models/campaign'
+require './lib/ad_service_api/client'
 
 describe Campaign do
 
@@ -29,7 +31,16 @@ describe Campaign do
         expect(subject).to be_an_instance_of(Array)
       end
 
-      
+      it 'should return array of three remote campaigns' do
+        expect(subject.size).to eql(3)
+      end
+
+      it 'should return correct remote data' do
+        first_remote_campaign = subject.first
+        expect(first_remote_campaign['reference']).to eq('1')
+        expect(first_remote_campaign['status']).to eq('enabled')
+        expect(first_remote_campaign['description']).to eq('Description for campaign 11')
+      end
     end
   end
 end
