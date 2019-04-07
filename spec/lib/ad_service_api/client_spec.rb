@@ -13,6 +13,7 @@ describe AdServiceApi::Client do
           'User-Agent'=>'Ruby'
         }
       ).to_return(
+        headers: { 'Content-Type': 'application/json' },
         status: 200,
         body: File.read('./spec/campaigns_response_with_discrepancy.json')
       )
@@ -22,7 +23,7 @@ describe AdServiceApi::Client do
 
     context 'when return valid response' do
       it 'should return array of ads data' do
-        expect(subject['ads']).to be_an_instance_of(Array)
+        expect(subject.parsed_response['ads']).to be_an_instance_of(Array)
       end
 
       it 'should return success response' do
