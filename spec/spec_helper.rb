@@ -1,5 +1,6 @@
 require 'webmock/rspec'
 require 'dotenv'
+require './lib/db/database_connection'
 
 Dotenv.load('test.env')
 
