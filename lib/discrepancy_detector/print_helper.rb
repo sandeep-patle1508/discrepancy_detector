@@ -21,5 +21,11 @@ module DiscrepancyDetector
     def print_line(line)
       puts line
     end
+
+    # print exception error in well format
+    def self.print_error(e)
+      puts("Script failed with error - #{e}")
+      puts(e.backtrace.join("\n"))
+    end
   end
 end

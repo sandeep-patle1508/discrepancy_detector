@@ -3,7 +3,7 @@ require './lib/db/database_setup'
 
 Dotenv.load('development.env')
 module Db
-  class DevelopmentDatabaseSetup < DatabaseSetup
+  class DevelopmentDatabaseSetup < Db::DatabaseSetup
 
     private
 
@@ -15,7 +15,8 @@ module Db
       [
         [101, 'disabled', '1', 'New Description for campaign 11'],
         [102, 'disabled', '2', 'Description for campaign 12'],
-        [103, 'enabled', '3', 'Description for campaign 13']
+        [103, 'enabled', '3', 'Description for campaign 13'],
+        [104, 'enabled', '4', 'Description for campaign 14']
       ]
     end
   end
