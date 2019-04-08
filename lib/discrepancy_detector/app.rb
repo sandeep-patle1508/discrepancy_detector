@@ -1,7 +1,8 @@
-require './lib/discrepancy_detector/campaign_discrepancy_detector'
+require './lib/discrepancy_detector/print_helper'
 
 module DiscrepancyDetector
   class App
+    include PrintHelper
 
     # support action and corresponding detector service
     SUPPORTED_DISCREPANCY_DETECTOR = {
@@ -15,6 +16,7 @@ module DiscrepancyDetector
     def run(argv)
       if argv.size == 1 && !argv.first.empty? && SUPPORTED_DISCREPANCY_DETECTOR.keys.include?(argv.first)
         discrepancies = SUPPORTED_DISCREPANCY_DETECTOR[argv.first].call
+        print_discrepancy_result(discrepancies)
       else
         abort 'We do not support this action, please enter a valid action.'
       end
